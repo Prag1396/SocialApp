@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
-
+import SwiftKeychainWrapper
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -21,6 +21,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         passwrdTextField.delegate = self
         emailAddressTxtField.delegate = self
+      
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //If the user has successfully created an account
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "toFeed", sender: nil)
+        }
     }
 
     func dismissKeyboard() {
@@ -34,6 +43,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 print("Pragun: Unable to authenticate with Firebase. \(error.debugDescription)")
             } else {
                 print("Pragun: Successfully Authenticated with Firebase")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
             }
         }
     }
@@ -43,11 +55,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+    func completeSignIn(id: String) {
+       let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("Pragun: Data Svaed to Keychain \(keyChainResult)")
+        performSegue(withIdentifier: "toFeed", sender: nil)
+
     }
     
-
     @IBAction func facebookButtonPressed(_ sender: Any) {
         
         let faceBookLogin = FBSDKLoginManager()
@@ -70,12 +84,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil {
                     print("Pragun: Email User authenticated with Firebase")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil {
                             print("Pragun: Unable to authenticate with Firebase Using Email")
                         } else {
                             print("Pragun: Successfully Authenticated with Firebase using Email")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }

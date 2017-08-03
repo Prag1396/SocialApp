@@ -18,6 +18,7 @@
 		DB3F22A41F329AE900E26387 /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22A31F329AE900E26387 /* ButtonManager.swift */; };
 		DB3F22A61F329E2B00E26387 /* TextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22A51F329E2B00E26387 /* TextFieldManager.swift */; };
 		DB3F22AC1F32CCC100E26387 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3F22AB1F32CCC100E26387 /* GoogleService-Info.plist */; };
+		DB3F22AE1F33E0E300E26387 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22AD1F33E0E300E26387 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DB3F22A31F329AE900E26387 /* ButtonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		DB3F22A51F329E2B00E26387 /* TextFieldManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldManager.swift; sourceTree = "<group>"; };
 		DB3F22AB1F32CCC100E26387 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB3F22AD1F33E0E300E26387 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				DB3F228A1F3260DE00E26387 /* SignInViewController.swift */,
+				DB3F22AD1F33E0E300E26387 /* FeedViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				DB3F22891F3260DE00E26387 /* AppDelegate.swift in Sources */,
 				DB3F22A21F32838400E26387 /* Constants.swift in Sources */,
 				DB3F22A61F329E2B00E26387 /* TextFieldManager.swift in Sources */,
+				DB3F22AE1F33E0E300E26387 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
