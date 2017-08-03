@@ -14,6 +14,10 @@
 		DB3F22901F3260DE00E26387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB3F228F1F3260DE00E26387 /* Assets.xcassets */; };
 		DB3F22931F3260DE00E26387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB3F22911F3260DE00E26387 /* LaunchScreen.storyboard */; };
 		DB3F229B1F32614200E26387 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3F229A1F32614200E26387 /* GoogleService-Info.plist */; };
+		DB3F22A01F3281A400E26387 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F229F1F3281A400E26387 /* ViewManager.swift */; };
+		DB3F22A21F32838400E26387 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22A11F32838400E26387 /* Constants.swift */; };
+		DB3F22A41F329AE900E26387 /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22A31F329AE900E26387 /* ButtonManager.swift */; };
+		DB3F22A61F329E2B00E26387 /* TextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22A51F329E2B00E26387 /* TextFieldManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		DB3F22921F3260DE00E26387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB3F22941F3260DE00E26387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3F229A1F32614200E26387 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB3F229F1F3281A400E26387 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		DB3F22A11F32838400E26387 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DB3F22A31F329AE900E26387 /* ButtonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
+		DB3F22A51F329E2B00E26387 /* TextFieldManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,9 @@
 		DB3F229D1F3262EE00E26387 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB3F229F1F3281A400E26387 /* ViewManager.swift */,
+				DB3F22A31F329AE900E26387 /* ButtonManager.swift */,
+				DB3F22A51F329E2B00E26387 /* TextFieldManager.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -111,6 +122,7 @@
 		DB3F229E1F3262F500E26387 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB3F22A11F32838400E26387 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -240,8 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3F22A01F3281A400E26387 /* ViewManager.swift in Sources */,
+				DB3F22A41F329AE900E26387 /* ButtonManager.swift in Sources */,
 				DB3F228B1F3260DE00E26387 /* SignInViewController.swift in Sources */,
 				DB3F22891F3260DE00E26387 /* AppDelegate.swift in Sources */,
+				DB3F22A21F32838400E26387 /* Constants.swift in Sources */,
+				DB3F22A61F329E2B00E26387 /* TextFieldManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
