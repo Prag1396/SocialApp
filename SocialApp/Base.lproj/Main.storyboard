@@ -100,7 +100,7 @@
                                         </constraints>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-Hh-bW7" customClass="ButtonManager" customModule="SocialApp" customModuleProvider="target">
                                         <rect key="frame" x="90" y="90" width="60" height="60"/>
@@ -112,6 +112,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.87" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="87O-Q6-1at"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -133,6 +136,10 @@
                             <constraint firstItem="uju-p7-iit" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ymQ-Xm-LUH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailAddressTxtField" destination="F9u-Db-pby" id="9eb-nK-Iix"/>
+                        <outlet property="passwrdTextField" destination="1yR-VL-510" id="OMd-8A-itB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

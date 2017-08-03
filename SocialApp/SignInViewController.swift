@@ -12,13 +12,20 @@ import FBSDKCoreKit
 import Firebase
 
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var passwrdTextField: TextFieldManager!
+    @IBOutlet weak var emailAddressTxtField: TextFieldManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        passwrdTextField.delegate = self
+        emailAddressTxtField.delegate = self
     }
 
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     func authFirebase(_ credential: AuthCredential) {
         
@@ -30,6 +37,16 @@ class SignInViewController: UIViewController {
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
 
     @IBAction func facebookButtonPressed(_ sender: Any) {
         
@@ -46,6 +63,27 @@ class SignInViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func signInBtnTapped(_ sender: UIButton) {
+        
+        if let email = emailAddressTxtField.text, let pwd = passwrdTextField.text {
+            Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                if error == nil {
+                    print("Pragun: Email User authenticated with Firebase")
+                } else {
+                    Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                        if error != nil {
+                            print("Pragun: Unable to authenticate with Firebase Using Email")
+                        } else {
+                            print("Pragun: Successfully Authenticated with Firebase using Email")
+                        }
+                    })
+                }
+            })
+        }
+    }
+    
+    
 
 }
 
