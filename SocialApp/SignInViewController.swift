@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKCoreKit
+import Firebase
+
 
 class SignInViewController: UIViewController {
 
@@ -15,7 +19,33 @@ class SignInViewController: UIViewController {
         
     }
 
+    
+    func authFirebase(_ credential: AuthCredential) {
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if error != nil {
+                print("Pragun: Unable to authenticate with Firebase. \(error.debugDescription)")
+            } else {
+                print("Pragun: Successfully Authenticated with Firebase")
+            }
+        }
+    }
 
+    @IBAction func facebookButtonPressed(_ sender: Any) {
+        
+        let faceBookLogin = FBSDKLoginManager()
+        faceBookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if(error != nil) {
+                print("Pragun: Unable to authenticate with Facebook \(error.debugDescription)")
+            } else if result?.isCancelled == true {
+                print("Pragun: User Cancelled Facebook Authentication")
+            } else {
+                print("Pragun: Sucessfully Authenticaated with Facebook")
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                self.authFirebase(credential)
+            }
+        }
+    }
 
 }
 
