@@ -1,14 +1,14 @@
 //
-//  ViewManager.swift
+//  ImageManager.swift
 //  SocialApp
 //
-//  Created by Pragun Sharma on 02/08/17.
+//  Created by Pragun Sharma on 03/08/17.
 //  Copyright © 2017 Pragun Sharma. All rights reserved.
 //
 
 import UIKit
 
-class ViewManager: UIView {
+class ImageManager: UIImageView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,7 +16,13 @@ class ViewManager: UIView {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 0.5
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        layer.cornerRadius = 2.0
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = self.frame.width/2
+        
     }
 
 }
