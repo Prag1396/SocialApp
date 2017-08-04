@@ -44,7 +44,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             } else {
                 print("Pragun: Successfully Authenticated with Firebase")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         }
@@ -55,7 +56,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        
+       DataService.dbs.createFirebaseDBUser(uid: id, userData: userData)
+        
        let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Pragun: Data Svaed to Keychain \(keyChainResult)")
         performSegue(withIdentifier: "toFeed", sender: nil)
@@ -85,7 +89,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     print("Pragun: Email User authenticated with Firebase")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -94,7 +99,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         } else {
                             print("Pragun: Successfully Authenticated with Firebase using Email")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })

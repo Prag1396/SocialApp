@@ -161,12 +161,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5y6-Hq-AyV" customClass="ViewManager" customModule="SocialApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="2by-G2-zgD">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="2by-G2-zgD">
                                         <rect key="frame" x="7" y="7" width="40" height="40"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="XYB-MX-0jX"/>
                                             <constraint firstAttribute="height" constant="40" id="clB-QQ-VgH"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="fCY-pL-gPu" appends="YES" id="Uyn-Ox-tf5"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fd-LI-iaT">
                                         <rect key="frame" x="122.5" y="9" width="131.5" height="36"/>
@@ -224,15 +228,15 @@
                                     <constraint firstItem="2Zt-dy-Hmj" firstAttribute="leading" secondItem="pur-p9-3Ky" secondAttribute="leading" constant="8" id="mDc-r0-yfF"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="392" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fs2-sL-c2a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="392" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fs2-sL-c2a">
                                 <rect key="frame" x="0.0" y="142" width="375" height="525"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="392" id="tr2-m1-u3T">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="392" id="tr2-m1-u3T" customClass="FeedTableViewCell" customModule="SocialApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="392"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tr2-m1-u3T" id="Tqj-7D-nhq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="391.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEV-M0-5M3" customClass="ViewManager" customModule="SocialApp" customModuleProvider="target">
@@ -257,7 +261,7 @@
                                                                             <color key="textColor" red="0.80392158031463623" green="0.5058823823928833" blue="0.38431373238563538" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="6j0-WH-rnM" customClass="ImageManager" customModule="SocialApp" customModuleProvider="target">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="6j0-WH-rnM">
                                                                             <rect key="frame" x="267" y="0.0" width="60" height="60"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="60" id="HqH-ce-CHB"/>
@@ -266,12 +270,15 @@
                                                                         </imageView>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="8pl-c6-78d">
-                                                                    <rect key="frame" x="0.0" y="70" width="327" height="161"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="8pl-c6-78d">
+                                                                    <rect key="frame" x="0.0" y="70" width="327" height="201"/>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text Entered will be displayed here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sjh-zl-wuv">
-                                                                    <rect key="frame" x="0.0" y="241" width="327" height="90"/>
+                                                                    <rect key="frame" x="0.0" y="281" width="327" height="50"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ALr-5z-w0x"/>
+                                                                    </constraints>
                                                                     <color key="textColor" red="0.80392158030000005" green="0.50588238240000005" blue="0.3843137324" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -314,6 +321,13 @@
                                                 <constraint firstItem="dEV-M0-5M3" firstAttribute="top" secondItem="Tqj-7D-nhq" secondAttribute="top" constant="8" id="mzH-Ya-zFI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="kZA-Uw-YeN" id="zR4-2M-YZ3"/>
+                                            <outlet property="likesLabel" destination="XBq-tQ-fDG" id="S7J-LJ-cVF"/>
+                                            <outlet property="profileImg" destination="G8U-iw-M6b" id="7Cv-0Z-CpH"/>
+                                            <outlet property="userImg" destination="8pl-c6-78d" id="oC1-GF-jdq"/>
+                                            <outlet property="usrTxtField" destination="sjh-zl-wuv" id="sZs-EU-Tsk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -333,10 +347,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionTextField" destination="2kI-lq-080" id="Tiw-gQ-x3o"/>
+                        <outlet property="tableView" destination="fs2-sL-c2a" id="tE6-hk-VDK"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toSignIn" id="oCK-4v-T9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De4-XT-Suc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fCY-pL-gPu">
+                    <connections>
+                        <action selector="signOutBtnTapped:" destination="ckR-mY-b3A" id="ckm-RE-cLP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="792.79999999999995" y="35.532233883058474"/>
         </scene>
