@@ -15,12 +15,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var captionTextField: TextFieldManager!
     
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         captionTextField.delegate = self
+        
+        DataService.dbs.REF_POSTS.observe(.value, with: { (snapshot) in
+            //Parsing firebase data
+            self.posts = []
+            
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    print("SNAP KEY: \(snap.key)")
+                    if let postDict = snap.value as? Dictionary<String, AnyObject> { //snap.value return a dictionary, snap itself is an object
+                        let key = snap.key
+                        let post = Post(postKey: key, postData: postDict)
+                        self.posts.append(post)
+                        
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        })
     }
 
     func dismissKeyboard() {
@@ -45,7 +65,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        print(posts.count)
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

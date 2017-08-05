@@ -22,6 +22,7 @@
 		DB3F22B01F33F78600E26387 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22AF1F33F78600E26387 /* ImageManager.swift */; };
 		DB3F22B21F350D8D00E26387 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22B11F350D8D00E26387 /* FeedTableViewCell.swift */; };
 		DB3F22B51F35241800E26387 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22B41F35241800E26387 /* DataService.swift */; };
+		DB3F22B71F354F1C00E26387 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F22B61F354F1B00E26387 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		DB3F22AF1F33F78600E26387 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		DB3F22B11F350D8D00E26387 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		DB3F22B41F35241800E26387 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		DB3F22B61F354F1B00E26387 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				DB3F22A11F32838400E26387 /* Constants.swift */,
+				DB3F22B61F354F1B00E26387 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3F22A01F3281A400E26387 /* ViewManager.swift in Sources */,
+				DB3F22B71F354F1C00E26387 /* Post.swift in Sources */,
 				DB3F22A41F329AE900E26387 /* ButtonManager.swift in Sources */,
 				DB3F228B1F3260DE00E26387 /* SignInViewController.swift in Sources */,
 				DB3F22B01F33F78600E26387 /* ImageManager.swift in Sources */,
