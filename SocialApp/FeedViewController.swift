@@ -10,12 +10,18 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var captionTextField: TextFieldManager!
+    @IBOutlet weak var addImage: ImageManager!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         captionTextField.delegate = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         DataService.dbs.REF_POSTS.observe(.value, with: { (snapshot) in
             //Parsing firebase data
@@ -59,6 +69,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "toSignIn", sender: nil)
     }
+    
+    
+    @IBAction func addImageTapped(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -75,14 +90,30 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? FeedTableViewCell {
             
-            cell.configureCell(post: post)
-            return cell
+            if let img = FeedViewController.imageCache.object(forKey: post.imageURL as NSString) {
+                cell.configureCell(post: post, img: img)
+                return cell
+            } else {
+             
+                cell.configureCell(post: post)
+                return cell
+            }
             
         } else {
             
             return FeedTableViewCell()
         }
         
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            addImage.image = image
+        } else {
+            print("Pragun: An invalid image was selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 
 }

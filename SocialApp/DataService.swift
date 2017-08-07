@@ -12,12 +12,22 @@ import Firebase
 let DB_BASE = Database.database().reference() //Contain the url for our base of our database on firebase console
 //We dont need to pull the url because it takes that info from the google.plist file
 
+let STORAGE_BASE = Storage.storage().reference()
+
 class DataService {
     
     static let dbs = DataService()
+    
+    //DB References
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
     private var _REF_USERS = DB_BASE.child("users")
+    
+    
+    //STORAGE References
+    private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    
+    
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -29,6 +39,10 @@ class DataService {
     
     var REF_POSTS: DatabaseReference {
         return _REF_POSTS
+    }
+    
+    var REF_POST_IMAGES: StorageReference {
+        return _REF_POST_IMAGES
     }
     
     func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {

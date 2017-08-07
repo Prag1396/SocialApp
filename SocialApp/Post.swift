@@ -41,14 +41,13 @@ class Post {
     init(postKey: String, postData: Dictionary<String, AnyObject>) {
         
         print(postData)
-        
         self._postKey = postKey
         
         if let caption = postData["caption"] as? String {
             self._caption = caption
         }
         
-        if let imageURL = postData["imageURL"] as? String {
+        if let imageURL = postData["imageUrl"] as? String {
             self._imageURL = imageURL
         }
         
