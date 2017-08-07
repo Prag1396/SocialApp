@@ -16,9 +16,20 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var userImg: UIImageView!
     
+    
+    var post: Post!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func configureCell(post: Post) {
+        
+        self.post = post
+        self.usrTxtField.text = post.caption
+        self.likesLabel.text = "\(post.likes)"
+        
     }
 
 

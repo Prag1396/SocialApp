@@ -40,6 +40,8 @@ class Post {
     
     init(postKey: String, postData: Dictionary<String, AnyObject>) {
         
+        print(postData)
+        
         self._postKey = postKey
         
         if let caption = postData["caption"] as? String {

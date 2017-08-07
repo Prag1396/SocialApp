@@ -70,7 +70,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath)
+        
+        let post = posts[indexPath.row]
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? FeedTableViewCell {
+            
+            cell.configureCell(post: post)
+            return cell
+            
+        } else {
+            
+            return FeedTableViewCell()
+        }
+        
     }
 
 }
