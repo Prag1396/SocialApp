@@ -41,8 +41,7 @@ class Post {
     }
     
     init(postKey: String, postData: Dictionary<String, AnyObject>) {
-        
-        print(postData)
+ 
         self._postKey = postKey
         
         if let caption = postData["caption"] as? String {
@@ -64,10 +63,10 @@ class Post {
     func setLikes(addLike: Bool) {
         
         if addLike {
-            self._numberOfLikes = self._numberOfLikes + 1
+            _numberOfLikes = _numberOfLikes + 1
             
         } else {
-            self._numberOfLikes = self._numberOfLikes - 1
+            _numberOfLikes = _numberOfLikes - 1
         }
         
         _postLiked.child("likes").setValue(_numberOfLikes)

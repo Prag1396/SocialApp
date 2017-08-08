@@ -147,12 +147,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let img = FeedViewController.imageCache.object(forKey: post.imageURL as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
-             
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
             
         } else {
             

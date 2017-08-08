@@ -37,9 +37,13 @@ class FeedTableViewCell: UITableViewCell {
         
         likesRef.observeSingleEvent(of: .value, with: { (snapShot) in
             if let _ = snapShot.value as? NSNull {
-            self.likes_Icon.image = UIImage(named: "filled-heart")
+                self.likes_Icon.image = UIImage(named: "filled-heart")
+                self.post.setLikes(addLike: true)
+                self.likesRef.setValue(true)
             } else {
-            self.likes_Icon.image = UIImage(named: "empty-heart")
+                self.likes_Icon.image = UIImage(named: "empty-heart")
+                self.post.setLikes(addLike: false)
+                self.likesRef.removeValue()
             }
             
             })
@@ -76,13 +80,8 @@ class FeedTableViewCell: UITableViewCell {
           
             if let _ = snapShot.value as? NSNull {
                 self.likes_Icon.image = UIImage(named: "empty-heart")
-                post.setLikes(addLike: true)
-                self.likesRef.setValue(true)
             } else {
                 self.likes_Icon.image = UIImage(named: "filled-heart")
-                post.setLikes(addLike: false)
-                self.likesRef.removeValue()
-                
             }
         })
         }
