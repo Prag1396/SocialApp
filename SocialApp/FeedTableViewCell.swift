@@ -16,21 +16,42 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var usrTxtField: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var userImg: UIImageView!
-    
+    @IBOutlet weak var likes_Icon: UIImageView!
     
     var post: Post!
+    
+    var likesRef: DatabaseReference!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+        tap.numberOfTapsRequired = 1
+        likes_Icon.addGestureRecognizer(tap)
+        likes_Icon.isUserInteractionEnabled = true
     }
+    
+    func likeTapped(_ sender: UITapGestureRecognizer) {
+        
+        likesRef.observeSingleEvent(of: .value, with: { (snapShot) in
+            if let _ = snapShot.value as? NSNull {
+            self.likes_Icon.image = UIImage(named: "filled-heart")
+            } else {
+            self.likes_Icon.image = UIImage(named: "empty-heart")
+            }
+            
+            })
+    }
+    
     
     func configureCell(post: Post, img: UIImage? = nil) {
         
         self.post = post
         self.usrTxtField.text = post.caption
         self.likesLabel.text = "\(post.likes)"
-        
+        likesRef = DataService.dbs.REF_USER_CURRENT.child("likes").child(post.postID)
         if img != nil {
             self.userImg.image = img
         } else {
@@ -51,6 +72,20 @@ class FeedTableViewCell: UITableViewCell {
                 })
         }
         
+        likesRef.observeSingleEvent(of: .value, with: { (snapShot) in
+          
+            if let _ = snapShot.value as? NSNull {
+                self.likes_Icon.image = UIImage(named: "empty-heart")
+                post.setLikes(addLike: true)
+                self.likesRef.setValue(true)
+            } else {
+                self.likes_Icon.image = UIImage(named: "filled-heart")
+                post.setLikes(addLike: false)
+                self.likesRef.removeValue()
+                
+            }
+        })
+        }
         
     }
-}
+

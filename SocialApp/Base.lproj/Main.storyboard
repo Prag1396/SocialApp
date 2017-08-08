@@ -331,6 +331,7 @@
                                         <connections>
                                             <outlet property="descriptionLabel" destination="kZA-Uw-YeN" id="zR4-2M-YZ3"/>
                                             <outlet property="likesLabel" destination="XBq-tQ-fDG" id="S7J-LJ-cVF"/>
+                                            <outlet property="likes_Icon" destination="6j0-WH-rnM" id="b7Z-p6-PQD"/>
                                             <outlet property="profileImg" destination="G8U-iw-M6b" id="7Cv-0Z-CpH"/>
                                             <outlet property="userImg" destination="8pl-c6-78d" id="oC1-GF-jdq"/>
                                             <outlet property="usrTxtField" destination="sjh-zl-wuv" id="sZs-EU-Tsk"/>
